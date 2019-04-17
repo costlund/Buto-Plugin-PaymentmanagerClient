@@ -1,0 +1,90 @@
+replace:
+  customer_session_tag: _from_settings_
+service_select_for_session:
+  sql: |
+    select 
+    p.id, 
+    p.service_id,
+    s.name,
+    p.customer_tag,
+    p.date_from,
+    p.date_to,
+    (date_format(now(), '%Y-%m-%d')) as date_now,
+    (datediff(p.date_to, now())) as days_left
+    from paymentmanager_payment as p
+    inner join paymentmanager_service as s on p.service_id=s.id
+    where 
+    p.customer_tag='[SESSION:[customer_session_tag]]' and 
+    p.date_from < now() and 
+    p.date_to >= date_format(now(), '%Y-%m-%d')
+    order by p.date_to
+    ;
+  paramszzz:
+    -
+      type: s
+      value: rs:id
+  select:
+    - id
+    - service_id
+    - name
+    - customer_tag
+    - date_from
+    - date_to
+    - date_now
+    - days_left
+service_select_for_payment:
+  sql: |
+    select 
+    p.id, 
+    p.service_id,
+    s.name,
+    p.customer_tag,
+    p.date_from,
+    p.date_to,
+    (date_format(now(), '%Y-%m-%d')) as date_now,
+    (datediff(p.date_to, now())) as days_left
+    from paymentmanager_payment as p
+    inner join paymentmanager_service as s on p.service_id=s.id
+    where 
+    p.customer_tag='[SESSION:[customer_session_tag]]' and 
+    p.date_from < now() and 
+    p.date_to >= date_format(now(), '%Y-%m-%d') and 
+    p.id=?
+    order by p.date_to
+    ;
+  params:
+    -
+      type: s
+      value: rs:id
+  select:
+    - id
+    - service_id
+    - name
+    - customer_tag
+    - date_from
+    - date_to
+    - date_now
+    - days_left
+service_select_one:
+  sql: |
+    select
+    s.id,
+    s.name,
+    s.price,
+    s.period
+    from paymentmanager_service as s
+    where 
+    s.id=?
+    ;
+  params:
+    -
+      type: s
+      value: rs:id
+  select:
+    - id
+    - name
+    - price
+    - period
+
+
+  

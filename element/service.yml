@@ -1,0 +1,66 @@
+-
+  type: div
+  settings:
+    enabled: rs:id
+  innerHTML:
+    -
+      type: a
+      settings:
+        enabled: rs:renew
+      attribute:
+        href: rs:url_payment
+      innerHTML:
+        -
+          type: span
+          innerHTML: rs:name
+        -
+          type: span
+          innerHTML: '-'
+        -
+          type: span
+          innerHTML: Days left
+        -
+          type: span
+          innerHTML: rs:days_left
+    -
+      type: div
+      settings:
+        disabled: rs:no_service
+      innerHTML:
+        -
+          type: a
+          settings:
+            disabled: rs:renew
+          attribute:
+            href: rs:url_payment
+            style: 'font-size:smaller'
+          innerHTML:
+            -
+              type: span
+              innerHTML: rs:name
+            -
+              type: span
+              innerHTML: '-'
+            -
+              type: span
+              innerHTML: Days left
+            -
+              type: span
+              innerHTML: rs:days_left
+-
+  type: div
+  settings:
+    disabled: rs:id
+  innerHTML:
+    -
+      type: a
+      attribute:
+        href: rs:url_payment
+        id: no_service
+      innerHTML: No service
+    -
+      type: script
+      innerHTML: |
+        location.href = document.getElementById('no_service').getAttribute('href');
+  
+  

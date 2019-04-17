@@ -1,0 +1,51 @@
+tables:
+  paymentmanager_service:
+    field:
+      id:
+        primary_key: true
+        type: varchar(50)
+        not_null: true
+      name:
+        type: varchar(50)
+      price:
+        type: double(11,2)
+      period:
+        type: smallint(11)
+  paymentmanager_payment:
+    field:
+      id:
+        primary_key: true
+        type: varchar(50)
+        not_null: true
+      service_id:
+        type: varchar(50)
+        foreing_key:
+          reference_table: paymentmanager_service
+          reference_field: id
+          on_delete: RESTRICT
+          on_update: CASCADE
+      customer_tag:
+        type: varchar(50)
+      price:
+        type: double(11,2)
+      date_from:
+        type: date
+      date_to:
+        type: date
+extra:
+  _description: Extra field to add to each table if not exist in schema.
+  field:
+    created_at:
+      type: timestamp
+      default: CURRENT_TIMESTAMP
+    updated_at:
+      type: timestamp
+    created_by:
+      type: varchar(50)
+    updated_by:
+      type: varchar(50)
+      
+        
+        
+        
+        

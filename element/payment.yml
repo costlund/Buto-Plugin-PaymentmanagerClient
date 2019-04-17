@@ -1,0 +1,165 @@
+-
+  type: div
+  settings:
+    role:
+      item:
+        - unknown
+  attribute:
+    style: 'font-style:italic'
+  innerHTML: Role issue.
+-
+  type: div
+  settings:
+    role:
+      item:
+        - client
+  attribute:
+    style: 'font-style:italic'
+  innerHTML:
+    -
+      type: style
+      innerHTML: |
+        .label:after{content:':'}
+        .price:after{content:' SEK'}
+    -
+      type: h2
+      attribute:
+        style: 'text-align:center'
+      innerHTML: service:name
+    -
+      type: div
+      settings:
+        disabled: service:renew
+      attribute:
+        class: alert alert-info
+      innerHTML: Your current service is up to date in period.
+    -
+      type: div
+      settings:
+        enabled: service:renew
+      attribute:
+        class: alert alert-primary
+      innerHTML: 
+        -
+          type: div
+          attribute:
+            class: row
+          innerHTML:
+            -
+              type: div
+              attribute:
+                class: col-md-12
+                style: 'text-align:center;font-style:italic'
+              innerHTML: A payment is required.
+            -
+              type: div
+              attribute:
+                class: col-md-6
+              innerHTML:
+                -
+                  type: div
+                  innerHTML:
+                    -
+                      type: a
+                      attribute:
+                        _: Funkar inte om jag ändrar något...
+                        href: "swish://payment?data=%7B%22version%22%3A1%2C%22payee%22%3A%7B%22value%22%3A%22%2B46705090659%22%7D%7D"
+                        target: _blank
+                      innerHTML: Skicka pengar
+                      settings:
+                        enabled: false
+                    -
+                      type: strong
+                      attribute:
+                        class: label
+                      innerHTML: Price
+                    -
+                      type: span
+                      attribute:
+                        class: price
+                      innerHTML: service:price
+                -
+                  type: div
+                  innerHTML:
+                    -
+                      type: strong
+                      attribute:
+                        class: label
+                      innerHTML: Swish number
+                    -
+                      type: span
+                      innerHTML: settings:swish_number
+                -
+                  type: div
+                  innerHTML:
+                    -
+                      type: strong
+                      attribute:
+                        class: label
+                      innerHTML: Period
+                    -
+                      type: span
+                      innerHTML: service:date_from
+                    -
+                      type: span
+                      innerHTML: '-'
+                    -
+                      type: span
+                      innerHTML: service:date_to
+            -
+              type: div
+              attribute:
+                class: col-md-6
+                style: 'text-align:right'
+              innerHTML:
+                -
+                  type: img
+                  attribute:
+                    src: /plugin/paymentmanager/client/Swish_Logo_Primary_RGB.png
+                    style: 'width:80px'
+    -
+      type: div
+      settings:
+        enabled: rs:id
+        #enabled: null
+      attribute:
+        class: alert alert-secondary
+      innerHTML: 
+        -
+          type: div
+          attribute:
+            style: 'text-align:center'
+          innerHTML: 
+            -
+              type: i
+              innerHTML: Current service.
+        -
+          type: div
+          innerHTML:
+            -
+              type: strong
+              attribute:
+                class: label
+              innerHTML: Days left
+            -
+              type: span
+              innerHTML: rs:days_left
+        -
+          type: div
+          innerHTML:
+            -
+              type: strong
+              attribute:
+                class: label
+              innerHTML: Period
+            -
+              type: span
+              innerHTML: rs:date_from
+            -
+              type: span
+              innerHTML: '-'
+            -
+              type: span
+              innerHTML: rs:date_to
+  
+  
