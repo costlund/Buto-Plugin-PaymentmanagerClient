@@ -85,6 +85,25 @@ service_select_one:
     - name
     - price
     - period
-
-
+payment_insert_one:
+  sql: insert into paymentmanager_payment (id, service_id, customer_tag, price, date_from, date_to, created_by) values (?, ?, ?, ?, ?, ?, '[user_id]');
+  params:
+    -
+      type: s
+      value: rs:id
+    -
+      type: s
+      value: rs:service_id
+    -
+      type: s
+      value: rs:customer_tag
+    -
+      type: d
+      value: rs:price
+    -
+      type: s
+      value: rs:date_from
+    -
+      type: s
+      value: rs:date_to
   

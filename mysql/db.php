@@ -75,4 +75,11 @@ class db_paymentmanager{
     $this->mysql->execute($sql->get());
     return new PluginWfArray($this->mysql->getStmtAsArrayOne());
   }
+  public function payment_insert_one($data){
+    $this->db_open();
+    $sql = $this->sql_get('payment_insert_one');
+    $sql->setByTag($data);
+    $this->mysql->execute($sql->get());
+    return null;
+  }
 }

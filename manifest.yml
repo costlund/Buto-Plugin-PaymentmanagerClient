@@ -1,0 +1,29 @@
+version: '1.1'
+history:
+  '1.1':
+    date: '2019-06-02'
+    description: 'Add method to insert payment.'
+  '1.0':
+    date: '2019-06-02'
+    description: 'Manifest created.'
+plugin:
+  -
+    name: wf/array
+    version: 1.0.1
+  -
+    name: wf/yml
+    version: '1.1'
+  -
+    name: i18n/translate_v1
+    version: '1.5'
+sys:
+  -
+    name: mercury
+    version:
+      - '1.0'
+php:
+  - '7.2'
+author: null
+links: null
+description: ''
+third_part_software: null

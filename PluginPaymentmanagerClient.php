@@ -4,6 +4,7 @@ class PluginPaymentmanagerClient{
   public $data = null;
   public $settings = null;
   public $user = null;
+  public $db = null;
   function __construct($data = array()){
     wfPlugin::includeonce('wf/array');
     wfPlugin::includeonce('wf/yml');

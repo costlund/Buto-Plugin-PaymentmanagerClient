@@ -93,3 +93,23 @@ innerHTML: This content must have active service with id service_001.
 ```
 /mysql/schema.yml
 ```
+
+## Plugin usage
+
+Insert a payment.
+
+```
+wfPlugin::includeonce('paymentmanager/client');
+$payment_manager = new PluginPaymentmanagerClient();
+$payment_data = new PluginWfArray();
+$payment_data->set('id', wfCrypt::getUid());
+$payment_data->set('service_id', 'service_001');
+$payment_data->set('customer_tag', 'customer_001');
+$payment_data->set('price', 1200);
+$payment_data->set('date_from', date('Y-m-d'));
+$payment_data->set('date_to', date('Y-m-d', strtotime(date('Y-m-d'). ' + 101 days')));
+$payment_manager->db->payment_insert_one($payment_data->get());
+return array("console.log(".json_encode($payment_data->get()).")");
+```
+
+
